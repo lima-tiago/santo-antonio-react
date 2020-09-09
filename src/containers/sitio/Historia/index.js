@@ -44,6 +44,10 @@ const Hipismo = (props) => {
                         {data.page.title}
                     </h2>
 
+                    {data.page.dados.video_superior ? (
+                        <video autoPlay muted loop src={data.page.dados.video_superior}></video>
+                    ) : null}
+
                     <h3>
                         {data.page.dados.titulo_texto}
                     </h3>

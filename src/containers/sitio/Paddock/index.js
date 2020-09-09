@@ -21,6 +21,7 @@ const Paddock = (props) => {
     useEffect(() => {
         const dataName = 'sitio-paddock-data';
         if (getStorage(dataName)) {
+            console.log(JSON.parse(getStorage(dataName)))
             setIsFetching(false);
             setData(JSON.parse(getStorage(dataName)));
 
@@ -52,7 +53,14 @@ const Paddock = (props) => {
             </div>
             <div className="container pb-4 pb-lg-5">
                 <div className="markup">
-                    <img src={data.page.dados.imagem_superior} alt=""/>
+                    { data.page.dados.imagem_superior ? (
+                        <img src={data.page.dados.imagem_superior} alt=""/>
+                    ) : null}
+                    { data.page.dados.video_superior ? (
+                        <video autoPlay muted loop >
+                            <source src={data.page.dados.video_superior} type="video/mp4"/>
+                        </video>
+                    ) : null}
                 </div>
             </div>
 
@@ -66,7 +74,14 @@ const Paddock = (props) => {
                         <div className="img-legenda legenda-1">
                             {data.page.dados.texto_quadro_verde}
                         </div>
-                        <img src={data.page.dados.imagem_secundaria} alt=""/>
+                        { data.page.dados.imagem_secundaria ? (
+                            <img src={data.page.dados.imagem_secundaria} alt=""/>
+                        ) : null}
+                        {data.page.dados.video_secundario ? (
+                            <video autoPlay muted loop>
+                                <source src={data.page.dados.video_secundario} type="video/mp4"/>
+                            </video>
+                        ) : null}
                     </div>
 
                 </div>
