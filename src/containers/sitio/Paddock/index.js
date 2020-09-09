@@ -58,7 +58,7 @@ const Paddock = (props) => {
                     ) : null}
                     { data.page.dados.video_superior ? (
                         <div dangerouslySetInnerHTML={{ __html: `
-                            <video autoplay muted loop >
+                            <video autoPlay loop >
                                 <source src="${data.page.dados.video_superior}" type="video/mp4"/>
                             </video>
                         `}}></div>
