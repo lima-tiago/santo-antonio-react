@@ -45,7 +45,12 @@ const Hipismo = (props) => {
                     </h2>
 
                     {data.page.dados.video_superior ? (
-                        <video autoPlay muted loop src={data.page.dados.video_superior}></video>
+                        <div dangerouslySetInnerHTML={{
+                            __html: `
+                            <video autoplay muted loop playsinline>
+                                <source src="${data.page.dados.video_superior}" type="video/mp4"/>
+                            </video>
+                        `}}></div>
                     ) : null}
 
                     <h3>

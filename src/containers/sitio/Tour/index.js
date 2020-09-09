@@ -130,7 +130,11 @@ const Flora = (props) => {
                             <img src={data.page.dados.imagem_texto_continuacao_4} alt=""/>
                         ) : null}
                         {data.page.dados.video_superior ? (
-                            <video autoPlay muted loop src={data.page.dados.video_superior}></video>
+                            <div dangerouslySetInnerHTML={{ __html: `
+                                <video autoplay muted loop playsinline>
+                                    <source src="${data.page.dados.video_superior}" type="video/mp4"/>
+                                </video>
+                            `}}></div>
                         ) : null}
                     </div>
                 </div>
@@ -155,7 +159,11 @@ const Flora = (props) => {
                                 <img src={data.page.dados.imagem_texto_continuacao_5} alt=""/>
                             ) : null}
                             {data.page.dados.video_secundario ? (
-                                <video autoPlay muted loop src={data.page.dados.video_secundario}></video>
+                                <div dangerouslySetInnerHTML={{ __html: `
+                                    <video autoplay muted loop playsinline>
+                                        <source src="${data.page.dados.video_superior}" type="video/mp4"/>
+                                    </video>
+                                `}}></div>
                             ) : null}
                         </div>
                     </div>
