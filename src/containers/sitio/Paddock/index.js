@@ -57,9 +57,11 @@ const Paddock = (props) => {
                         <img src={data.page.dados.imagem_superior} alt=""/>
                     ) : null}
                     { data.page.dados.video_superior ? (
-                        <video autoPlay muted loop >
-                            <source src={data.page.dados.video_superior} type="video/mp4"/>
-                        </video>
+                        <div dangerouslySetInnerHTML={{ __html: `
+                            <video autoplay muted loop >
+                                <source src="${data.page.dados.video_superior}" type="video/mp4"/>
+                            </video>
+                        `}}></div>
                     ) : null}
                 </div>
             </div>
