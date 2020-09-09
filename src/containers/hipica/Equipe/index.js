@@ -18,6 +18,7 @@ const Equipe = (props) => {
         useEffect(() => {
             const dataName = 'hipica-equipe-data';
             if (getStorage(dataName)) {
+                console.log(JSON.parse(getStorage(dataName)))
                 setIsFetching(false);
                 setData(JSON.parse(getStorage(dataName)));
     
@@ -47,7 +48,7 @@ const Equipe = (props) => {
             <>
             <div className="container pt-lg-3">
                 <div className="markup pb-3 pb-lg-4">
-                    <h2 class="mb-lg-4">Equipe</h2>
+                    <h2 className="mb-lg-4">Equipe</h2>
                     <p>
                         {data.page.dados.frase_superior}
                     </p>
@@ -55,7 +56,7 @@ const Equipe = (props) => {
             </div>
 
             <div className="container justify-content-center pb-5">
-                <div className="row">
+                <div className="row justify-content-center">
                     <div className="col-lg-4 d-flex justify-content-center justify-content-lg-end">
                         <button onClick={() => changeFilter('Cavaleiros')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Cavaleiros' ? 'active' : ''}`}>
                             Cavaleiros
@@ -84,6 +85,11 @@ const Equipe = (props) => {
                     <div className="col-lg-4 d-flex justify-content-center justify-content-lg-start">
                         <button onClick={() => changeFilter('Ferradores')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Ferradores' ? 'active' : ''}`}>
                             Ferradores
+                        </button>
+                    </div>
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-center">
+                        <button onClick={() => changeFilter('Administradores')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Administradores' ? 'active' : ''}`}>
+                            Administradores
                         </button>
                     </div>
                 </div>
