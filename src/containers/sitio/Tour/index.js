@@ -161,7 +161,7 @@ const Flora = (props) => {
                             {data.page.dados.video_secundario ? (
                                 <div dangerouslySetInnerHTML={{ __html: `
                                     <video autoplay muted loop playsinline>
-                                        <source src="${data.page.dados.video_superior}" type="video/mp4"/>
+                                        <source src="${data.page.dados.video_secundario}" type="video/mp4"/>
                                     </video>
                                 `}}></div>
                             ) : null}
