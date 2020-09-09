@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA,oCACE,0BACE,cAAe,CACf,mBAAsB,CAAE","file":"25.ae9a6e80.chunk.css","sourcesContent":["@media screen and (max-width: 768px) {\n  .Flora .PageBanner__title {\n    font-size: 57px;\n    margin-bottom: -18px; } }\n"]}

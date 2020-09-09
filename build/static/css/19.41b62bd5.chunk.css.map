@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA,uBACE,oBAAuB,CAEzB,uBACE,oBAAqB,CACrB,oCAAqC,CACrC,4BAA+B","file":"19.41b62bd5.chunk.css","sourcesContent":[".Historia-h .overlay-1 {\n  padding-bottom: 300px; }\n\n.Historia-h .galeria-1 {\n  margin-bottom: -300px;\n  -webkit-transform: translateY(-300px);\n  transform: translateY(-300px); }\n"]}
