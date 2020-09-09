@@ -116,7 +116,9 @@ const Paddock = (props) => {
             </div>
             <div className="container pt-5">
                 <GallerySlider
-                    items={data.fotos || []}/>
+                    items={data.fotos.sort(function(a, b){
+                        return a.ordem - b.ordem
+                    }) || []}/>
             </div>
 
             <div className="container mt-3 mt-lg-5 pt-lg-2">
