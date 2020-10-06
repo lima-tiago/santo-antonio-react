@@ -6,6 +6,7 @@ import './styles.scss';
 
 const Hipismo = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -32,7 +33,7 @@ const Hipismo = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [language]);
 
     return (
         <section className="Historia page-interna mb-2 mb-lg-5">

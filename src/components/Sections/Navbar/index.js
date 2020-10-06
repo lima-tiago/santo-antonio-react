@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import {NavLink, withRouter, Link} from 'react-router-dom'
 import {animateScroll} from 'react-scroll'
 
@@ -154,7 +154,7 @@ const Navbar = ({location}) => {
                                 ))}
                             </>)}
                         </div>
-                        <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinhoNav">
+                        <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinhoNav" rel="noopener noreferrer">
                             Conheça o Chiquinho Brandão
                         </a>
                     </div>

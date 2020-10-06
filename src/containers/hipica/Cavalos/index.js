@@ -2,7 +2,7 @@ import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {Animated} from "react-animated-css";
 import { withRouter, useLocation } from 'react-router-dom';
-import {Element, scroller, animateScroll as scroll} from 'react-scroll';
+import { Element } from 'react-scroll';
 
 import CavaloLink from '../../../components/UI/CavaloLink/'
 
@@ -11,6 +11,7 @@ import './styles.scss';
 const Cavalos = (props) => {
     const location = useLocation();
     const pageItems = 6;
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -44,6 +45,7 @@ const Cavalos = (props) => {
         const filter = params.get('filter');
     
         if(filter){
+            // eslint-disable-next-line
             switch(filter){
                 case '7':
                     changeFilter('No Brasil')
@@ -62,7 +64,7 @@ const Cavalos = (props) => {
                 break;
             }
         }
-    }, []);
+    }, [ language, props.location.search ]);
         
     
         const changeFilter = (filter) => {
@@ -117,6 +119,7 @@ const Cavalos = (props) => {
                 
                 <div className="container">
                     <div className="row">
+                        {/* eslint-disable-next-line */}
                         {data.cavalos[currFilter] ? data.cavalos[currFilter].map( (cavalo, i) => {
                             if( i < maxItems){
                             return(

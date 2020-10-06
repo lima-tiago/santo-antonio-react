@@ -9,6 +9,7 @@ import './styles.scss';
 
 const Resultados = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -68,7 +69,7 @@ const Resultados = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language ]);
 
     useEffect(() => {
         if(data.resultados){
@@ -77,11 +78,11 @@ const Resultados = (props) => {
             .resultados
             .filter(i => {
                 const teste = (currFilter.cavaleiro
-                    ? i.integrante.id == currFilter.cavaleiro.value
+                    ? i.integrante.id === currFilter.cavaleiro.value
                     : true) && (currFilter.cavalos
-                    ? i.cavalo.id == currFilter.cavalos.value
+                    ? i.cavalo.id === currFilter.cavalos.value
                     : true) && (currFilter.anos
-                    ? new Date(i.date).getFullYear() == currFilter.anos.value
+                    ? new Date(i.date).getFullYear() === currFilter.anos.value
                     : true)
 
                 return teste;

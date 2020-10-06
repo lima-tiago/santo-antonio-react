@@ -1,11 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
 import './styles.scss'
 
 const MidiaLink = ({id, img, title, categoria, data, link}) => {
     return(
-        <a className="MidiaLink" href={`${link}`} target="_blank" style={{backgroundImage: `url(${img})`}}>
+        <a className="MidiaLink" href={`${link}`} target="_blank" style={{backgroundImage: `url(${img})`}} rel="noopener noreferrer">
             <div className="MidiaLink__caption">
                 <div className="data">
                     {data} | {categoria}

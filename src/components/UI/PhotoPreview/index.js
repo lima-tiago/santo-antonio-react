@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {scroller as scroll, Element} from 'react-scroll'
 
 import PhotoModal from './PhotoModal'
 
@@ -24,7 +23,7 @@ const PhotoPreview = (props) => {
     }
 
     const movePrev = () => {
-        if (currIndex != 0) {
+        if (currIndex !== 0) {
             setCurrIndex(old => old > 0
                 ? old - 1
                 : sliderData.length - 1);

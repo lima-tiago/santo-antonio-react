@@ -5,7 +5,7 @@ import './styles.scss';
 const Footer = (props) => {
     return (
         <footer className="Footer wow fadeInUp">
-           <img className="Footer__brand" src={require('../../../assets/images/brands/footer.png')}/>
+           <img className="Footer__brand" src={require('../../../assets/images/brands/footer.png')} alt=""/>
            <hr/>
            <p className="Footer__copy">
            © 2020 Sítio Santo Antônio. Todos os direitos reservados.

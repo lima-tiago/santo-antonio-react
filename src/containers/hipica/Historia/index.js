@@ -6,6 +6,7 @@ import './styles.scss';
 
 const Historia = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -33,7 +34,7 @@ const Historia = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [language]);
 
     console.log(data)
 

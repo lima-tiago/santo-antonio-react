@@ -11,6 +11,7 @@ import './styles.scss';
 
 const Midia = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -87,7 +88,7 @@ const Midia = (props) => {
                 . finally(() => {
                     setIsFetching(false);
                 })
-        }, []);
+        }, [ language ]);
     
         const changeFilter = (key, val) => {
            if(!val.value){
@@ -119,7 +120,7 @@ const Midia = (props) => {
                         : true) && 
                     
                     (currFilter.anos
-                    ? new Date(i.date_of_publication).getFullYear() == currFilter.anos.value
+                    ? new Date(i.date_of_publication).getFullYear() === currFilter.anos.value
                     : true)
 
                 return teste;

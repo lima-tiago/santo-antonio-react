@@ -5,13 +5,13 @@ import {Link, withRouter, useLocation} from 'react-router-dom'
 
 import PhotoPreview from '../../../components/UI/PhotoPreview'
 import VideoGallery from '../../../components/UI/VideoGallery'
-import GenealogiaTable from '../../../components/UI/GenealogiaTable'
 
 import './styles.scss';
 import Spinner from 'components/UI/Spinner/Spinner';
 
 const Integrante = ({match}) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -38,7 +38,7 @@ const Integrante = ({match}) => {
             .finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [language, match.params.id]);
     
 
     return (
@@ -59,7 +59,7 @@ const Integrante = ({match}) => {
             <div className="container pt-5 mt-lg-5">
                 <div className="row position-relative">
                     <div className="col-lg-6">
-                        <img src={data.integrante.image}/>
+                        <img src={data.integrante.image} alt=""/>
                     </div>
                     <div className="col-lg-6 h-100">
                         <div className="Integrante__about h-100">
@@ -83,7 +83,9 @@ const Integrante = ({match}) => {
                                 </div>
                             </div>
                             <div className="social">
+                                {/* eslint-disable-next-line */}
                                 {data.integrante.facebook ? <a href={data.integrante.facebook} className="facebook" target="_blank"></a> : ''}
+                                {/* eslint-disable-next-line */}
                                 {data.integrante.instagram ? <a href={data.integrante.instagram} className="instagram" target="_blank"></a> : ''}
                             </div>
                         </div>
@@ -123,6 +125,7 @@ const Integrante = ({match}) => {
                                     <div className="ano">
                                         2019
                                     </div>
+                                    {/* eslint-disable-next-line */}
                                     {data.integrante.resultadosFinal.map( (resul, i) => {
                                         if(i < 3){
                                         return(

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {scroller as scroll, Element} from 'react-scroll'
 import {Animated} from "react-animated-css";
 
 import VideoPlayer from '../../Sections/VideoPlayer'
@@ -11,6 +10,7 @@ const PhotoPreview = (props) => {
         setCurrIndex] = useState(0);
     const [sliderData,
         setSliderData] = useState([]);
+    // eslint-disable-next-line
     const [showModal,
         setShowModal] = useState(false);
 
@@ -19,14 +19,15 @@ const PhotoPreview = (props) => {
             setSliderData(props.items)
             console.log('Length', sliderData.length)
         }
-    }, [props.items]);
+    }, [props.items, sliderData.length]);
 
+    // eslint-disable-next-line
     const activeGaleria = () => {
         setShowModal(true);
     }
 
     const movePrev = () => {
-        if (currIndex != 0) {
+        if (currIndex !== 0) {
             setCurrIndex(old => old > 1
                 ? old - 1
                 : sliderData.length - 1);
@@ -70,10 +71,9 @@ const PhotoPreview = (props) => {
             <section className="PhotoPreview">
                 <div className="row">
                     {props.videos ? 
-                    
-                        props
-                        .videos
-                        .map((video, i) => {
+
+                        // eslint-disable-next-line
+                        props.videos.map((video, i) => {
                             if(i < currIndex + 1 * 4){
                                 return(
                                     <div className="col-lg-6 mb-4" key={i}>

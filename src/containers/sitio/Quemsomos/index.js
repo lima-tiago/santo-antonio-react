@@ -6,6 +6,7 @@ import './styles.scss';
 
 const QuemSomos = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -32,7 +33,7 @@ const QuemSomos = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [language]);
 
     return (
         <section className="Quemsomos page-interna mb-2 mb-lg-5">

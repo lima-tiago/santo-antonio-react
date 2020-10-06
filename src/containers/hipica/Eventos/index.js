@@ -7,6 +7,7 @@ import './styles.scss';
 
 const Eventos = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -33,22 +34,22 @@ const Eventos = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language ]);
 
     useEffect( () => {
-        const anos = new Array();
+        const anos = [];
         $.each(data.eventos, function(key, mesesv) { 
            // Adiciona os anos
            anos.push({
                ano: key,
                meses: (() => {
-                const meses = new Array();
+                const meses = [];
                 $.each(mesesv, function(key, diasv) { 
                     // Adiciona os meses dentro do ano
                     meses.push({
                         mes: key,
                         dias: (function(){
-                            const dias = new Array();
+                            const dias = [];
                             $.each(diasv, function(key, diav) { 
                                 // Adiciona os dias dentro do mes
                                 dias.push({
@@ -64,7 +65,6 @@ const Eventos = (props) => {
                })()
              })
            })
-           console.log(anos)
            setrealdata(anos)
     },[data])
 

@@ -6,6 +6,7 @@ import './styles.scss';
 
 const Flora = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -32,7 +33,7 @@ const Flora = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [language]);
 
     return (
         <section className="Flora page-interna mb-2 mb-lg-5">

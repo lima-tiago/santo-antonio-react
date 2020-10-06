@@ -12,6 +12,7 @@ import Spinner from 'components/UI/Spinner/Spinner';
 
 const Cavalo = ({match}) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -38,7 +39,7 @@ const Cavalo = ({match}) => {
             .finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language, match.params.id ]);
 
     return (
         <section className="Cavalo page-interna mb-2 mb-lg-5 position-relative">
@@ -59,7 +60,7 @@ const Cavalo = ({match}) => {
             <div className="container pt-5 mt-lg-5">
                 <div className="row">
                     <div className="col-lg-6">
-                        <img src={data.cavalo.image}/>
+                        <img src={data.cavalo.image} alt=""/>
                     </div>
                     <div className="col-lg-6">
                         <ul className="Cavalo__about">
@@ -200,6 +201,7 @@ const Cavalo = ({match}) => {
                             <div className="ano">
                                 2019
                             </div>
+                            {/* eslint-disable-next-line */}
                             {data.cavalo.resultadosFinal.map( (resul, i) => {
                                 if(i < 3){
                                     return(

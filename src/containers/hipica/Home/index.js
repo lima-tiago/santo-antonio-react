@@ -19,8 +19,8 @@ const Home = (props) => {
     const [isToggled,
         setIsToggled] = useState(false);
     // Variavel para testar breakpoint menor que 992px
-    const [isMDScreen,
-        setIsMDScreen] = useState(window.innerWidth < 778);
+    // eslint-disable-next-line
+    const [isMDScreen, setIsMDScreen] = useState(window.innerWidth < 778);
         const [loadingPercentage, setLoadingPercentage] = useState(1);
 
         const config = useMemo(() => ({
@@ -49,7 +49,7 @@ const Home = (props) => {
             .finally(() => {
                 setIsFetching(false);
             })
-        } ,[config]);
+        } ,[language, config]);
 
 
     useEffect( () => {
@@ -73,7 +73,7 @@ const Home = (props) => {
             }
         }, 4000);
         return () => clearInterval(interval);
-    }, [currIndex]);
+    }, [currIndex, data.slides.length, isAutomatic]);
 
     const toggleMenu = () => {
         setIsToggled(oldState => !oldState);
@@ -141,7 +141,7 @@ const Home = (props) => {
                         <span className="title">{data.pages[12].titulo}</span>
                         <span className="desc">{data.pages[12].phrase}</span>
                     </Link>
-                    <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho">
+                    <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho" rel="noopener noreferrer">
                         Conheça o Chiquinho Brandão
                     </a>
                 </div>

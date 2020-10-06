@@ -48,7 +48,7 @@ const Home = (props) => {
             .finally(() => {
                 setIsFetching(false);
             })
-        } ,[config]);
+        } ,[language, config]);
 
     const updateState = (index, automatic) => {
         setCurrIndex(index)
@@ -67,7 +67,7 @@ const Home = (props) => {
             }
         }, 4000);
         return () => clearInterval(interval);
-    }, [currIndex]);
+    }, [currIndex, data.slides.length, isAutomatic]);
 
     const toggleMenu = () => {
         setIsToggled(oldState => !oldState);
@@ -136,7 +136,7 @@ const Home = (props) => {
                         <span className="title">{data.pages[5].titulo}</span>
                         <span className="desc">{data.pages[5].phrase}</span>
                     </Link>
-                    <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho">
+                    <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho" rel="noopener noreferrer">
                         Conheça o Chiquinho Brandão
                     </a>
                 </div>

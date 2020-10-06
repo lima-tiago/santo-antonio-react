@@ -1,6 +1,5 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect, useMemo} from 'react'
-import {getStorage, setStorage} from 'util/storage';
 import {Link, useLocation} from 'react-router-dom';
 
 import './styles.scss';
@@ -15,7 +14,7 @@ const Home = (props) => {
     const [data,
         setData] = useState({page: {dados: false}});
     const [loadingPercentage, setLoadingPercentage] = useState(1);
-    let timeout = false;
+    // let timeout = false;
 
         const config = useMemo(() => ({
             onDownloadProgress: progressEvent => {
@@ -44,7 +43,7 @@ const Home = (props) => {
             .finally(() => {
                 setIsFetching(false);
             })
-        } ,[config]);
+        } ,[language, config]);
 
     const [hasHover,
         setHasHover] = useState(false);
@@ -81,7 +80,7 @@ const Home = (props) => {
                     : false}
                     onMouseEnter={() => toggleHover('left')}
                     onMouseLeave={() => toggleHover(false)}>
-                    <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_sitio}`}/>
+                    <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_sitio}`} alt=""/>
                     <Link to="/sitio" className="Home__side-title">
                         Sítio
                     </Link>
@@ -93,7 +92,7 @@ const Home = (props) => {
                     : false}
                     onMouseEnter={() => toggleHover('right')}
                     onMouseLeave={() => toggleHover(false)}>
-                    <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_equipe}`}/>
+                    <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_equipe}`} alt=""/>
                     <Link to="/hipica" className="Home__side-title">
                         Equipe Hípica
                     </Link>

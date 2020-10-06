@@ -9,6 +9,7 @@ import './styles.scss';
 
 const Paddock = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -35,7 +36,7 @@ const Paddock = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language ]);
 
     return (
         <section className="Paddock page-interna mb-2 mb-lg-5">

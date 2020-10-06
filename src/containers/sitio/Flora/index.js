@@ -8,6 +8,7 @@ import GallerySlider from '../../../components/Sections/GallerySlider/'
 
 const Tour = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -34,7 +35,7 @@ const Tour = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language ]);
 
     return (
         <section className="Flora page-interna mb-2 mb-lg-5">

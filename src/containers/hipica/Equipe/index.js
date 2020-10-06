@@ -9,6 +9,7 @@ import './styles.scss';
 
 const Equipe = (props) => {
     const location = useLocation();
+    // eslint-disable-next-line
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -33,7 +34,7 @@ const Equipe = (props) => {
             . finally(() => {
                 setIsFetching(false);
             })
-    }, []);
+    }, [ language ]);
     
 
     const changeFilter = (filter) => {

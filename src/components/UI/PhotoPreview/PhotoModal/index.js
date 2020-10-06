@@ -1,5 +1,4 @@
 import React, {useRef, useEffect, useState} from 'react'
-import $ from 'jquery'
 import Slick from 'react-slick'
 import {Portal} from 'react-portal';
 
@@ -11,7 +10,6 @@ const PhotoModal = ({currentItem, items, closeModal, visible, descricao}) => {
     const slickSettings = {
         dots: false,
         nav: true,
-        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: true,
@@ -27,7 +25,7 @@ const PhotoModal = ({currentItem, items, closeModal, visible, descricao}) => {
             .current
             .slickGoTo(currentItem);
         }
-    }, [currentItem])
+    }, [currentItem, items])
 
     return (
         <Portal>
@@ -48,7 +46,7 @@ const PhotoModal = ({currentItem, items, closeModal, visible, descricao}) => {
                             ? <Slick ref={slickRef} afterChange={i => setCurrent(i)} {...slickSettings}>
                                     {items.map(i => (
                                         <article className="PhotoModal__item">
-                                            <img className="PhotoModal__item-img" src={i.image}/>
+                                            <img className="PhotoModal__item-img" src={i.image} alt=""/>
                                             <h4 className="PhotoModal__item-nome">{i.file_descricao}</h4>
                                             <h5 className="PhotoModal__item-autor">{i.file_artista}</h5>
                                         </article>

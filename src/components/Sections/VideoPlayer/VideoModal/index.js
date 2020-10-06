@@ -21,6 +21,7 @@ const GaleriaModal = ({closeModal, visible, url}) => {
                     </header>
                     <div className="VideoModal__content">
 
+                        {/* eslint-disable-next-line */}
                         <iframe
                             src={url}
                             className="video-iframe"
