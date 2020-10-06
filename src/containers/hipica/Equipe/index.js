@@ -87,8 +87,8 @@ const Equipe = (props) => {
                         </button>
                     </div>
                     <div className="col-lg-4 d-flex justify-content-center justify-content-lg-center">
-                        <button onClick={() => changeFilter('Administradores')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Administradores' ? 'active' : ''}`}>
-                            Administradores
+                        <button onClick={() => changeFilter('Administradora')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Administradores' ? 'active' : ''}`}>
+                            Administradora
                         </button>
                     </div>
                 </div>
