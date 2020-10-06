@@ -398,7 +398,7 @@ const Historia = (props) => {
 
                     { data.page.dados.titulo_texto_nova_empreitada_europa || data.page.dados.texto_nova_empreitada_europa ||
                         data.page.dados['img-hipismo-13_europa'] || data.page.dados['legenda_foto_inferior_europa'] ? (
-                        <div className="container sm pt-4 pt-lg-5">
+                        <div className="container sm">
                             <div className="markup">
                                 <h4>
                                     {data.page.dados.titulo_texto_nova_empreitada_europa}
