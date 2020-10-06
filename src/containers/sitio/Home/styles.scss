@@ -197,7 +197,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
             flex-direction: column;
             height: 100%;
             text-decoration: none;
-            padding: 0 35px;
+            padding: 0 15px;
             transition: all 0.4s;
 
             @media screen and (max-width: $bp-LG){
@@ -217,25 +217,13 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
                 &:first-child {
                     padding: 0 20px;
                 }
-
-                &:last-child{
-                    min-width: 200px;
-                }
-
-                &:nth-child(3){
-                    min-width: 230px;
-                }
-
-                &:nth-last-child(2){
-                    min-width: 230px;
-                }
             }
 
             @media screen and (max-width: 1320px) {
                 padding: 0 15px;
             }
 
-            &:not(:last-child) {
+            &:not(:nth-child(6)) {
                 border-right: 1px solid #9d875546;
 
                 @media screen and (max-width: $bp-LG){
@@ -374,4 +362,19 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         }
     }
 
+}
+
+.goToChiquinho {
+    width: 255px;
+    color: #fff;
+    background-color: #0A221D;
+    font-size: 16px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    border: .5px solid #9D8855;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: #061713;
+    }
 }

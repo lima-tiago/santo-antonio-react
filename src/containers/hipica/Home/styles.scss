@@ -223,7 +223,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
                 padding: 0 15px;
             }
 
-            &:not(:last-child) {
+            &:not(:nth-child(6)) {
                 border-right: 1px solid #9d875546;
 
                 @media screen and (max-width: $bp-LG){
@@ -364,4 +364,18 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         }
     }
 
+}
+.goToChiquinho {
+    width: 220px;
+    color: #fff;
+    background-color: #0A221D;
+    font-size: 16px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    border: .5px solid #9D8855;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: #061713;
+    }
 }

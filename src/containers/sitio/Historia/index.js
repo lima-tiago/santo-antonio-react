@@ -1,10 +1,11 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
+import { useLocation } from 'react-router-dom';
 
 import './styles.scss';
 
 const Hipismo = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -14,25 +15,23 @@ const Hipismo = (props) => {
         }
     });
 
-    useEffect(() => {
-        const dataName = 'sitio-historia-data';
-        if (getStorage(dataName)) {
-            setIsFetching(false);
-            setData(JSON.parse(getStorage(dataName)));
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
 
-        } else {
-            axios
-                .get('/sitio/historia')
-                .then(response => {
-                    console.log(response)
-                    setData(response.data);
-                    setStorage(dataName, JSON.stringify(response.data));
-                })
-                .catch(err => console.log(err))
-                . finally(() => {
-                    setIsFetching(false);
-                })
-        }
+    useEffect(() => {
+        axios
+            .get('/sitio/historia/' + language)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            . finally(() => {
+                setIsFetching(false);
+            })
     }, []);
 
     return (

@@ -1,0 +1,25 @@
+{
+  "hipica": [
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/cavalos/${slug}",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/cavalos",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/equipe",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/equipe/${slug}",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/eventos",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/historia",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/slides",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/midia",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/equipe/resultados"
+  ],
+  "sitio": [
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/fauna",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/flora",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/historia",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/slides",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/paddock",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/quemsomos",
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/sitio/tour"
+  ],
+  "Home": [
+    "https://agenciawebsorocaba.com.br/equipe_sa/api/v1/pages/home"
+  ]
+}

@@ -1,13 +1,13 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect, useMemo} from 'react';
-import {getStorage, setStorage} from 'util/storage';
-import {Link} from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 
 import './styles.scss';
 import Preloader from 'components/UI/Preloader';
 import brandImage from '../../../assets/images/brands/capa.svg';
 
 const Home = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -32,23 +32,23 @@ const Home = (props) => {
                 setLoadingPercentage(percentCompleted);
             }
         }), []);
+
+        let language = 'P'
+        if (location.search.includes('language=en')) {
+            language = 'I'
+        } else if (location.search.includes('language=es')) {
+            language = 'E'
+        }
     
         useEffect( () =>{
-          if(getStorage('home-equipe-data')){
-              setIsFetching(false);
-              console.log(JSON.parse(getStorage('home-equipe-data')))
-              return setData(JSON.parse(getStorage('home-equipe-data')))
-          }
-    
-          axios.get('equipe/slides', config)
-          .then(response => {
-              setData(response.data);
-              setStorage('home-equipe-data', JSON.stringify(response.data));
-          })
-          .catch(err => console.log(err))
-          .finally(() => {
-              setIsFetching(false);
-          })
+            axios.get('equipe/slides/' + language, config)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setIsFetching(false);
+            })
         } ,[config]);
 
 
@@ -141,6 +141,9 @@ const Home = (props) => {
                         <span className="title">{data.pages[12].titulo}</span>
                         <span className="desc">{data.pages[12].phrase}</span>
                     </Link>
+                    <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho">
+                        Conheça o Chiquinho Brandão
+                    </a>
                 </div>
             </nav>
 

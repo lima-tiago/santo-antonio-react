@@ -1,7 +1,6 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import GallerySlider from '../../../components/Sections/GallerySlider/'
 import VideoPlayer from '../../../components/Sections/VideoPlayer/'
@@ -9,6 +8,7 @@ import VideoPlayer from '../../../components/Sections/VideoPlayer/'
 import './styles.scss';
 
 const Paddock = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -17,27 +17,24 @@ const Paddock = (props) => {
             dados: false
         }
     });
+    
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
 
     useEffect(() => {
-        const dataName = 'sitio-paddock-data';
-        if (getStorage(dataName)) {
-            console.log(JSON.parse(getStorage(dataName)))
-            setIsFetching(false);
-            setData(JSON.parse(getStorage(dataName)));
-
-        } else {
-            axios
-                .get('/sitio/paddock')
-                .then(response => {
-                    console.log(response)
-                    setData(response.data);
-                    setStorage(dataName, JSON.stringify(response.data));
-                })
-                .catch(err => console.log(err))
-                . finally(() => {
-                    setIsFetching(false);
-                })
-        }
+        axios
+            .get('/sitio/paddock/' + language)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            . finally(() => {
+                setIsFetching(false);
+            })
     }, []);
 
     return (

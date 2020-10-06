@@ -1,7 +1,7 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect, useMemo} from 'react'
 import {getStorage, setStorage} from 'util/storage';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import './styles.scss';
 
@@ -9,6 +9,7 @@ import brandImg from '../../assets/images/brands/capa.svg'
 import Preloader from 'components/UI/Preloader';
 
 const Home = (props) => {
+    const location = useLocation()
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -25,23 +26,24 @@ const Home = (props) => {
                 setLoadingPercentage(percentCompleted);
             }
         }), []);
+
+        let language = 'P'
+        if (location.search.includes('language=en')) {
+            language = 'I'
+        } else if (location.search.includes('language=es')) {
+            language = 'E'
+        }
     
         useEffect( () =>{
-          if(getStorage('home-data')){
-              setIsFetching(false);
-              console.log(JSON.parse(getStorage('home-data')))
-              return setData(JSON.parse(getStorage('home-data')))
-          }
     
-          axios.get('/pages/home', config)
-          .then(response => {
-              setData(response.data);
-              setStorage('home-data', JSON.stringify(response.data));
-          })
-          .catch(err => console.log(err))
-          .finally(() => {
-              setIsFetching(false);
-          })
+            axios.get('/pages/home/' + language, config)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setIsFetching(false);
+            })
         } ,[config]);
 
     const [hasHover,
