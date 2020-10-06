@@ -154,7 +154,7 @@ const Navbar = ({location}) => {
                                 ))}
                             </>)}
                         </div>
-                        <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinhoNav" rel="noopener noreferrer">
+                        <a href="http://francisco-brandao.netlify.app/" class="goToChiquinhoNav">
                             Conheça o Chiquinho Brandão
                         </a>
                     </div>
