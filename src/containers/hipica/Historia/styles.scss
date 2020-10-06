@@ -1,13 +1,81 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Historia-h{
+.Historia{
 
-    .overlay-1{
-        padding-bottom: 300px;
+    &-h {
+        .overlay-1{
+            padding-bottom: 300px;
+        }
+        
+        .galeria-1{
+            margin-bottom: -300px;
+            transform: translateY(-300px);
+        }
     }
-    
-    .galeria-1{
-        margin-bottom: -300px;
-        transform: translateY(-300px);
+
+    &-ativa {
+        padding: 40px 0;
+        background-color: #A68951;
+        &__title {
+            h2 {
+                font-size: 34px;
+                // font-family: 'Lowan';
+                color: #fff;
+                font-weight: normal;
+                margin-top: 0;
+                text-transform: uppercase;
+            }
+        }
+        &__toggle {
+            position: relative;
+            width: 400px;
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            &:before {
+                content: '';
+                width: calc(100% - 80px);
+                height: 2px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background-color: #fff;
+            }
+            button {
+                background-color: transparent;
+                color: #fff;
+                border: none;
+                position: relative;
+                padding-top: 50px;
+                font-size: 26px;
+                &:before {
+                    content: '';
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    margin: 0 auto;
+                    background-color: #A68951;
+                    transition: background-color 0.3s;
+                }
+                &.selected {
+                    &:before {
+                        background-color: #0A221D;
+                    }
+                }
+            }
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
+
 }

@@ -14,6 +14,7 @@ const Historia = (props) => {
             dados: false
         }
     });
+    const [historiaPais, setHistoriaPais] = useState('brasil');
 
     let language = 'P'
     if (location.search.includes('language=en')) {
@@ -33,6 +34,8 @@ const Historia = (props) => {
                 setIsFetching(false);
             })
     }, []);
+
+    console.log(data)
 
     return (
         <section className="Historia-h page-interna mb-2 mb-lg-5">
@@ -59,6 +62,21 @@ const Historia = (props) => {
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_superior
                     }}></div>
+                </div>
+            </div>
+            <div class="Historia-ativa">
+                <div class="container">
+                    <div class="Historia-ativa__title">
+                        <h2>Título</h2>
+                    </div>
+                    <div class="Historia-ativa__toggle">
+                        <button onClick={() => setHistoriaPais('brasil')} class={historiaPais === 'brasil' ? 'selected' : ''}>
+                            Brasil
+                        </button>
+                                <button onClick={() => setHistoriaPais('europa')} class={historiaPais === 'europa' ? 'selected' : ''}>
+                            Europa
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="bg-bege">
