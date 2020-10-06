@@ -1,6 +1,6 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
+import { useLocation } from 'react-router-dom';
 
 import Select from 'react-select'
 import {Animated} from "react-animated-css";
@@ -8,6 +8,7 @@ import {Animated} from "react-animated-css";
 import './styles.scss';
 
 const Resultados = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -50,24 +51,23 @@ const Resultados = (props) => {
             .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)));
     }
 
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
+
     useEffect(() => {
-        const dataName = 'hipica-resultados-data';
-        if (getStorage(dataName)) {
-            setIsFetching(false);
-            setData(JSON.parse(getStorage(dataName)));
-        } else {
-            axios
-                .get('/equipe/resultados')
-                .then(response => {
-                    console.log(response)
-                    setData(response.data);
-                    setStorage(dataName, JSON.stringify(response.data));
-                })
-                .catch(err => console.log(err))
-                . finally(() => {
-                    setIsFetching(false);
-                })
-        }
+        axios
+            .get('/equipe/resultados/' + language)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            . finally(() => {
+                setIsFetching(false);
+            })
     }, []);
 
     useEffect(() => {

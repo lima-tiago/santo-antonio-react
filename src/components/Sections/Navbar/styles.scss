@@ -272,7 +272,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
             font-weight: bold;
         }
 
-        &:not(:nth-last-child(2)) {
+        &:not(:nth-last-child(1)) {
             border-right: .6px solid rgba(255, 255, 255, 0.582);
             
             @media screen and (max-width: $bp-LG) {
@@ -320,6 +320,20 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         @media screen and (max-width: $bp-MD){
             margin-top: 6px;
         }
+    }
+}
+.goToChiquinho {
+    width: 220px;
+    color: #fff;
+    background-color: #0A221D;
+    font-size: 16px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    border: .5px solid #9D8855;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: #061713;
     }
 }
 

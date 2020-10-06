@@ -1,7 +1,7 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {animateScroll} from 'react-scroll'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter, useLocation} from 'react-router-dom'
 
 import PhotoPreview from '../../../components/UI/PhotoPreview'
 import VideoGallery from '../../../components/UI/VideoGallery'
@@ -11,26 +11,34 @@ import './styles.scss';
 import Spinner from 'components/UI/Spinner/Spinner';
 
 const Integrante = ({match}) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
         setData] = useState(false);
 
-        useEffect(() => {
-            animateScroll.scrollToTop({duration: 200});
-            const slug = match.params.id;
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
 
-            axios
-                .get(`/equipe/equipe/${slug}`)
-                .then(response => {
-                    console.log(response)
-                    setData(response.data);
-                })
-                .catch(err => console.log(err))
-                .finally(() => {
-                    setIsFetching(false);
-                })
-        }, []);
+    useEffect(() => {
+        animateScroll.scrollToTop({duration: 200});
+        const slug = match.params.id;
+
+        axios
+            .get(`/equipe/equipe/${language}/${slug}`)
+            .then(response => {
+                console.log(response)
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setIsFetching(false);
+            })
+    }, []);
     
 
     return (

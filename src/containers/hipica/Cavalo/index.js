@@ -1,7 +1,7 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {animateScroll} from 'react-scroll'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter, useLocation} from 'react-router-dom'
 
 import PhotoPreview from '../../../components/UI/PhotoPreview'
 import VideoGallery from '../../../components/UI/VideoGallery'
@@ -11,17 +11,25 @@ import './styles.scss';
 import Spinner from 'components/UI/Spinner/Spinner';
 
 const Cavalo = ({match}) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
         setData] = useState(false);
 
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
+
     useEffect(() => {
         animateScroll.scrollToTop({duration: 200});
         const slug = match.params.id;
-
+        
         axios
-            .get(`equipe/cavalos/${slug}`)
+            .get(`equipe/cavalos/${language}/${slug}`)
             .then(response => {
                 console.log(response)
                 setData(response.data);

@@ -1,8 +1,7 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
 import {Animated} from "react-animated-css";
-import {withRouter} from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import {Element, scroller, animateScroll as scroll} from 'react-scroll';
 
 import CavaloLink from '../../../components/UI/CavaloLink/'
@@ -10,6 +9,7 @@ import CavaloLink from '../../../components/UI/CavaloLink/'
 import './styles.scss';
 
 const Cavalos = (props) => {
+    const location = useLocation();
     const pageItems = 6;
     const [isFetching,
         setIsFetching] = useState(true);
@@ -20,51 +20,49 @@ const Cavalos = (props) => {
     const [currFilter,
         setCurrFilter] = useState('No Brasil');
     
-            useEffect(() => {
-                const dataName = 'hipica-cavalos-data';
-                if (getStorage(dataName)) {
-                    setIsFetching(false);
-                    setData(JSON.parse(getStorage(dataName)));
-        
-                } else {
-                    axios
-                        .get('/equipe/cavalos')
-                        .then(response => {
-                            console.log(response)
-                            setData(response.data);
-                            setStorage(dataName, JSON.stringify(response.data));
-                        })
-                        .catch(err => console.log(err))
-                        . finally(() => {
-                            setIsFetching(false);
-                        })
-                }
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
 
-                const queryString = require('query-string');
-                var parsed = queryString.parse(props.location.search);
-                const params = new URLSearchParams(parsed); 
-                const filter = params.get('filter');
-            
-                if(filter){
-                    switch(filter){
-                        case '7':
-                            changeFilter('No Brasil')
-                        break;
-                        
-                        case '8':
-                            changeFilter('Na Europa')
-                        break;
+    useEffect(() => {
+        axios
+            .get('/equipe/cavalos/' + language)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            . finally(() => {
+                setIsFetching(false);
+            })
+
+        const queryString = require('query-string');
+        var parsed = queryString.parse(props.location.search);
+        const params = new URLSearchParams(parsed); 
+        const filter = params.get('filter');
     
-                        case '9':
-                            changeFilter('Potros')
-                        break;
-    
-                        case '10':
-                            changeFilter('Marcaram História')
-                        break;
-                    }
-                }
-            }, []);
+        if(filter){
+            switch(filter){
+                case '7':
+                    changeFilter('No Brasil')
+                break;
+                
+                case '8':
+                    changeFilter('Na Europa')
+                break;
+
+                case '9':
+                    changeFilter('Potros')
+                break;
+
+                case '10':
+                    changeFilter('Marcaram História')
+                break;
+            }
+        }
+    }, []);
         
     
         const changeFilter = (filter) => {

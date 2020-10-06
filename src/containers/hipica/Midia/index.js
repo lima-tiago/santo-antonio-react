@@ -1,6 +1,6 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
+import { useLocation } from 'react-router-dom';
 import Select from 'react-select';
 import {Animated} from "react-animated-css";
 
@@ -10,6 +10,7 @@ import Pagination from './MidiaPagination'
 import './styles.scss';
 
 const Midia = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -68,25 +69,24 @@ const Midia = (props) => {
             console.log(listAnos)
 
         }
+
+        let language = 'P'
+        if (location.search.includes('language=en')) {
+            language = 'I'
+        } else if (location.search.includes('language=es')) {
+            language = 'E'
+        }
     
         useEffect(() => {
-            const dataName = 'hipica-midia-data';
-            if (getStorage(dataName)) {
-                setIsFetching(false);
-                setData(JSON.parse(getStorage(dataName)));
-            } else {
-                axios
-                    .get('/equipe/midia')
-                    .then(response => {
-                        console.log(response)
-                        setData(response.data);
-                        setStorage(dataName, JSON.stringify(response.data));
-                    })
-                    .catch(err => console.log(err))
-                    . finally(() => {
-                        setIsFetching(false);
-                    })
-            }
+            axios
+                .get('/equipe/midia/' + language)
+                .then(response => {
+                    setData(response.data);
+                })
+                .catch(err => console.log(err))
+                . finally(() => {
+                    setIsFetching(false);
+                })
         }, []);
     
         const changeFilter = (key, val) => {

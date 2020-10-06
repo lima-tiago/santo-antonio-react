@@ -33,6 +33,9 @@ const Navbar = ({location}) => {
         }, {
             label: 'Tour',
             key: '/sitio/tour'
+        }, {
+            label: 'Hípica',
+            key: '/hipica'
         }
     ];
 
@@ -61,6 +64,9 @@ const Navbar = ({location}) => {
         }, {
             label: 'Mídia',
             key: '/hipica/midia'
+        }, {
+            label: 'Sítio',
+            key: '/sitio'
         }
     ];
 
@@ -131,11 +137,6 @@ const Navbar = ({location}) => {
                                         {i.label}
                                     </NavLink>                                
                                 ))}
-
-                                <Link className={`Navbar__button`}
-                                    to="/hipica">
-                                    Conheça a Equipe Hípica
-                                </Link>'
                             </>)}
 
                             {/hipica/.test(location.pathname) &&
@@ -151,13 +152,11 @@ const Navbar = ({location}) => {
                                         {i.label}
                                     </NavLink>                                
                                 ))}
-
-                                <Link className={`Navbar__button`}
-                                    to="/sitio">
-                                    Conheça o Sítio
-                                </Link>'
                             </>)}
                         </div>
+                        <a href="http://francisco-brandao.netlify.app/" target="_blank" class="goToChiquinho">
+                            Conheça o Chiquinho Brandão
+                        </a>
                     </div>
                 </div>
             </nav>

@@ -1,13 +1,14 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {Animated} from "react-animated-css";
-import {getStorage, setStorage} from 'util/storage';
+import { useLocation } from 'react-router-dom';
 
 import IntegranteLink from '../../../components/UI/IntegranteLink/'
 
 import './styles.scss';
 
 const Equipe = (props) => {
+    const location = useLocation();
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -15,27 +16,24 @@ const Equipe = (props) => {
     const [currFilter,
         setCurrFilter] = useState('Cavaleiros');
 
-        useEffect(() => {
-            const dataName = 'hipica-equipe-data';
-            if (getStorage(dataName)) {
-                console.log(JSON.parse(getStorage(dataName)))
+    let language = 'P'
+    if (location.search.includes('language=en')) {
+        language = 'I'
+    } else if (location.search.includes('language=es')) {
+        language = 'E'
+    }
+
+    useEffect(() => {
+        axios
+            .get('/equipe/equipe/' + language)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            . finally(() => {
                 setIsFetching(false);
-                setData(JSON.parse(getStorage(dataName)));
-    
-            } else {
-                axios
-                    .get('/equipe/equipe')
-                    .then(response => {
-                        console.log(response)
-                        setData(response.data);
-                        setStorage(dataName, JSON.stringify(response.data));
-                    })
-                    .catch(err => console.log(err))
-                    . finally(() => {
-                        setIsFetching(false);
-                    })
-            }
-        }, []);
+            })
+    }, []);
     
 
     const changeFilter = (filter) => {
