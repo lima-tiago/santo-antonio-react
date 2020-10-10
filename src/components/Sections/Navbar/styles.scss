@@ -189,11 +189,19 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
     }
 
     &__brand {
+        // width: 120px;
+        // height: 100%;
         @media screen and (max-width: $bp-LG) {
             display: none;
         }
+        
+        a {
+            // width: 120px;
+            // height: 120px;
+            // background-image:
+        }
 
-        img{
+        img, svg{
             width: 120px;
         }
     }

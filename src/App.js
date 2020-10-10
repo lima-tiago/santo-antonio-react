@@ -11,7 +11,7 @@ import 'assets/scss/util/__CSSTransitions.scss'
 const App = () => {
 
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/santoantonio">
             <Helmet>
                 <title>Santo Antônio</title>
                 <meta

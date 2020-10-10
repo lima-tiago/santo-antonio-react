@@ -84,7 +84,7 @@ const Hipismo = (props) => {
             <div className="container">
                 <div className="row my-5 py-lg-4">
                     <div className="col-lg-5 position-relative">
-                        <img src={data.page.dados.imagem_historia_1} class="img-1" alt=""/>
+                        <img src={data.page.dados.imagem_historia_1} className="img-1" alt=""/>
                     </div>
                     <div className="col-lg-7 position-relative">
                         <img src={data.page.dados.imagem_historia_2} alt=""/>

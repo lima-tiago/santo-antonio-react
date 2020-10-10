@@ -5,48 +5,30 @@ import {Helmet} from "react-helmet"
 
 import Spinner from './components/UI/Spinner/Spinner'
 
-function retry(fn, retriesLeft = 10, interval = 1000) {
-    return new Promise((resolve, reject) => {
-        fn()
-            .then(resolve)
-            .catch((error) => {
-                setTimeout(() => {
-                    if (retriesLeft === 1) {
-                        // reject('maximum retries exceeded');
-                        reject(error);
-                        return;
-                    }
-
-                    // Passing on "reject" is the important part
-                    retry(fn, retriesLeft - 1, interval).then(resolve, reject);
-                }, interval);
-            });
-    });
-}
 
 // Import Containers (Pages)
-const Home = React.lazy(() => retry(() => import ('containers/Home')))
-const Error404 = React.lazy(() => retry(() => import ('containers/Error/404')))
+import Home from 'containers/Home'
+import Error404 from 'containers/Error/404'
 
 // Hipica
-const HipicaHome = React.lazy(() => retry(() => import ('containers/hipica/Home')))
-const HipicaHistoria = React.lazy(() => retry(() => import ('containers/hipica/Historia')))
-const HipicaEquipe = React.lazy(() => retry(() => import ('containers/hipica/Equipe')))
-const HipicaIntegrante = React.lazy(() => retry(() => import ('containers/hipica/Integrante')))
-const HipicaCavalos = React.lazy(() => retry(() => import ('containers/hipica/Cavalos')))
-const HipicaCavalo = React.lazy(() => retry(() => import ('containers/hipica/Cavalo')))
-const HipicaResultados = React.lazy(() => retry(() => import ('containers/hipica/Resultados')))
-const HipicaEventos = React.lazy(() => retry(() => import ('containers/hipica/Eventos')))
-const HipicaMidia = React.lazy(() => retry(() => import ('containers/hipica/Midia')))
+import HipicaHome from 'containers/hipica/Home'
+import HipicaHistoria from 'containers/hipica/Historia'
+import HipicaEquipe from 'containers/hipica/Equipe'
+import HipicaIntegrante from 'containers/hipica/Integrante'
+import HipicaCavalos from 'containers/hipica/Cavalos'
+import HipicaCavalo from 'containers/hipica/Cavalo'
+import HipicaResultados from 'containers/hipica/Resultados'
+import HipicaEventos from 'containers/hipica/Eventos'
+import HipicaMidia from 'containers/hipica/Midia'
 
 // Sitio
-const SitioHome = React.lazy(() => retry(() => import ('containers/sitio/Home')))
-const SitioHistoria = React.lazy(() => retry(() => import ('containers/sitio/Historia')))
-const SitioQuemSomos = React.lazy(() => retry(() => import ('containers/sitio/Quemsomos')))
-const SitioPaddock = React.lazy(() => retry(() => import ('containers/sitio/Paddock')))
-const SitioFauna = React.lazy(() => retry(() => import ('containers/sitio/Fauna')))
-const SitioFlora = React.lazy(() => retry(() => import ('containers/sitio/Flora')))
-const SitioTour = React.lazy(() => retry(() => import ('containers/sitio/Tour')))
+import SitioHome from 'containers/sitio/Home'
+import SitioHistoria from 'containers/sitio/Historia'
+import SitioQuemSomos from 'containers/sitio/Quemsomos'
+import SitioPaddock from 'containers/sitio/Paddock'
+import SitioFauna from 'containers/sitio/Fauna'
+import SitioFlora from 'containers/sitio/Flora'
+import SitioTour from 'containers/sitio/Tour'
 
 const AppRouter = ({location}) => {
     const routes = [

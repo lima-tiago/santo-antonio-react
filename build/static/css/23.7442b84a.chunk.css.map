@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles.scss"],"names":[],"mappings":"AAAA,oCACE,yBACE,cAAe,CACf,mBAAsB,CAAE,CAE5B,MACE,UAAa","file":"23.7442b84a.chunk.css","sourcesContent":["@media screen and (max-width: 768px) {\n  .Tour .PageBanner__title {\n    font-size: 57px;\n    margin-bottom: -18px; } }\n\nvideo {\n  width: 100%; }\n"]}

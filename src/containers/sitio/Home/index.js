@@ -136,7 +136,7 @@ const Home = (props) => {
                         <span className="title">{data.pages[5].titulo}</span>
                         <span className="desc">{data.pages[5].phrase}</span>
                     </Link>
-                    <a href="http://francisco-brandao.netlify.app/" class="goToChiquinho">
+                    <a href="https://chiquinhobrandao.com.br/" class="goToChiquinho">
                         Conheça o Chiquinho Brandão
                     </a>
                 </div>

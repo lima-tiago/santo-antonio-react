@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {NavLink, withRouter, Link} from 'react-router-dom'
 import {animateScroll} from 'react-scroll'
 
-import brandImage from '../../../assets/images/brands/capa.svg'
+import {default as brandImage} from '../../../assets/images/brands/capa.svg'
 import './styles.scss';
 
 const Navbar = ({location}) => {
@@ -94,7 +94,7 @@ const Navbar = ({location}) => {
                 </button>
 
                 <NavLink className="Navbar__toggler-home" to="/">
-                    <img src={brandImage} alt="Logomarca Santo Antonio"/>
+                    <img src="https://chiquinhobrandao.com.br/santoantonio/static/media/capa.0c6344d5.svg" alt="Logomarca Santo Antonio"/>
                 </NavLink>
             </div>
             <nav
@@ -112,9 +112,9 @@ const Navbar = ({location}) => {
 
                         <div className="Navbar__left">
                             <div className="Navbar__brand">
-                                <NavLink to="/">
-                                    <img src={brandImage} alt="Logomarca Santo Antonio"/>
-                                </NavLink>
+                                <Link to="/">
+                                    <img src="https://chiquinhobrandao.com.br/santoantonio/static/media/capa.0c6344d5.svg" alt="Logomarca Santo Antonio" width={120}/>
+                                </Link>
                             </div>
 
                             <div className="Navbar__div"></div>
@@ -154,7 +154,7 @@ const Navbar = ({location}) => {
                                 ))}
                             </>)}
                         </div>
-                        <a href="http://francisco-brandao.netlify.app/" class="goToChiquinhoNav">
+                        <a href="https://chiquinhobrandao.com.br/" class="goToChiquinhoNav">
                             Conheça o Chiquinho Brandão
                         </a>
                     </div>
